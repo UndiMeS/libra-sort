@@ -18,6 +18,11 @@ public class left_collider : MonoBehaviour
     bool right = false;
     public bool even = false;
     bool even2 = false;
+    bool staying = false;
+    public int step;
+    static int stepTotal;
+
+
 
 
     GameObject pole;
@@ -34,6 +39,8 @@ public class left_collider : MonoBehaviour
         right_bowl = GameObject.Find("right_collider");
 
         even2 = right_bowl.GetComponent<right_collider>().even;
+
+        stepTotal = right_bowl.GetComponent<right_collider>().step;
 
         if (left == true)
         {
@@ -86,7 +93,7 @@ private void OnCollisionEnter2D(Collision2D collision)
     // }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    IEnumerator OnTriggerEnter2D(Collider2D collision)
     {
 
         for (int x = 1; x < 6; x++)
@@ -127,6 +134,19 @@ private void OnCollisionEnter2D(Collision2D collision)
                     right = false;
                     //right_bowl.GetComponent<right_collider>().even = false;
 
+                    staying = true;
+                    yield return new WaitForSeconds(1);
+                    if(staying){
+                        if(mass1 != 0 && mass_right != 0){
+                            step = step + 1;
+                            stepTotal = step + stepTotal;
+                            Debug.Log("schritt rechts: " + stepTotal);
+                            staying = false;
+                            CompareCounter.counter += 1;
+                        }
+
+                    }
+
                 }
                 else if (mass1 < mass_right)
                 {
@@ -138,6 +158,20 @@ private void OnCollisionEnter2D(Collision2D collision)
                     right = true;
                     //Debug.Log("alles gleich");
 
+                    staying = true;
+                    yield return new WaitForSeconds(1);
+                    if(staying){
+                        if(mass1 != 0 && mass_right != 0){
+                            step = step + 1;
+                            stepTotal = step + stepTotal;
+                            Debug.Log("schritt rechts: " + stepTotal);
+                            staying = false;
+
+                            CompareCounter.counter += 1;
+                        }
+
+                    }
+
                 }
                 else if (mass1 == mass_right)
                 {
@@ -148,6 +182,19 @@ private void OnCollisionEnter2D(Collision2D collision)
                     left = false;
                     right = false;
                     //Debug.Log("alles gleich");
+
+                    staying = true;
+                    yield return new WaitForSeconds(1);
+                    if(staying){
+                        if(mass1 != 0 && mass_right != 0){
+                            step = step + 1;
+                            stepTotal = step + stepTotal;
+                            Debug.Log("schritt rechts: " + stepTotal);
+                            staying = false;
+                            CompareCounter.counter += 1;
+                        }
+
+                    }
 
                 }
             }

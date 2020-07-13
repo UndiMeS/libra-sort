@@ -18,11 +18,16 @@ public class right_collider : MonoBehaviour
     float besetztMass = 0.0f;
     float mass_left;
 
+    public int step;
+    static int stepTotal;
+
+
     bool right = false;
     bool left = false;
     public bool even = false;
     bool even2 = false;
     bool besetzt = false;
+    bool staying = false;
 
     void Start()
     {
@@ -37,6 +42,8 @@ public class right_collider : MonoBehaviour
 
         even2 = left_bowl.GetComponent<left_collider>().even;
 
+        stepTotal = left_bowl.GetComponent<left_collider>().step;
+
         if (right == true)
         {
             pole.transform.rotation = Quaternion.Slerp(pole.transform.rotation, Quaternion.Euler(0, 0, -45), Time.deltaTime * speed);
@@ -44,6 +51,8 @@ public class right_collider : MonoBehaviour
             left = false;
             even2 = false;
             Debug.Log("rechts größer als links: " + mass2.ToString());
+
+            
 
         }
         // if(left == true){
@@ -61,13 +70,15 @@ public class right_collider : MonoBehaviour
             //even = true;
             Debug.Log("alles gleich");
 
+            
+
         }
 
 
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    IEnumerator OnTriggerEnter2D(Collider2D collision)
     {
 
 
@@ -93,6 +104,8 @@ public class right_collider : MonoBehaviour
                 gewicht.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
 
 
+
+
                 //gewicht.transform.position = this.transform.position;
 
                 if (mass2 > mass_left)
@@ -103,6 +116,20 @@ public class right_collider : MonoBehaviour
                     even2 = false;
                     left = false;
 
+                    staying = true;
+                    yield return new WaitForSeconds(1);
+                    if(staying){
+                        if(mass2 != 0 && mass_left != 0){
+                            step = step + 1;
+                            stepTotal = step + stepTotal;
+                            Debug.Log("schritt rechts: " + stepTotal);
+                            staying = false;
+                            CompareCounter.counter += 1;
+                        }
+
+                    }
+                    
+
                 }
                 else if (mass2 < mass_left)
                 {
@@ -112,6 +139,21 @@ public class right_collider : MonoBehaviour
                     right = false;
                     left = true;
 
+                    staying = true;
+                    yield return new WaitForSeconds(1);
+                    if(staying){
+                        if(mass2 != 0 && mass_left != 0){
+                            step = step + 1;
+                            stepTotal = step + stepTotal;
+                            Debug.Log("schritt rechts: " + stepTotal);
+                            staying = false;
+                            CompareCounter.counter += 1;
+                        }
+
+                    }
+
+                    
+
                 }
                 else if (mass2 == mass_left)
                 {
@@ -120,6 +162,21 @@ public class right_collider : MonoBehaviour
                     even2 = true;
                     right = false;
                     left = false;
+
+                    staying = true;
+                    yield return new WaitForSeconds(1);
+                    if(staying){
+                        if(mass2 != 0 && mass_left != 0){
+                            step = step + 1;
+                            stepTotal = step + stepTotal;
+                            Debug.Log("schritt rechts: " + stepTotal);
+                            staying = false;
+                            CompareCounter.counter += 1;
+                        }
+
+                    }
+
+                    
 
                 }
 
@@ -164,6 +221,7 @@ public class right_collider : MonoBehaviour
                     even2 = false;
                     left = false;
 
+
                 }
                 else if (mass2 < mass_left)
                 {
@@ -173,6 +231,7 @@ public class right_collider : MonoBehaviour
                     right = false;
                     left = true;
 
+
                 }
                 else if (mass2 == mass_left)
                 {
@@ -181,6 +240,7 @@ public class right_collider : MonoBehaviour
                     even2 = true;
                     right = false;
                     left = false;
+
 
                 }
             }
@@ -208,6 +268,8 @@ public class right_collider : MonoBehaviour
                 even2 = left_bowl.GetComponent<left_collider>().even;
                 collision.transform.parent = null;
                 gewicht.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+
+                staying = false;
 
                 if (mass2 > mass_left)
                 {
