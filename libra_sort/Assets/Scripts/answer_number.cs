@@ -11,11 +11,13 @@ public class answer_number : MonoBehaviour
     bool snapped = false;
     GameObject gewicht;
     Vector3 offset;
+    public  int WeightInPlace = 0;
+    GameObject Error;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        //Error = GameObject.Find("win");
     }
 
 
@@ -28,6 +30,7 @@ public class answer_number : MonoBehaviour
             answer = true;
             //Debug.Log("das ist richtig");
         }
+
 
         // if(snapped == true)
         // {
@@ -46,6 +49,8 @@ public class answer_number : MonoBehaviour
 
 private void OnTriggerEnter2D(Collider2D collision)
     {
+  
+         
 
             for(int x = 1; x < 6; x++ )
             {
@@ -53,10 +58,17 @@ private void OnTriggerEnter2D(Collider2D collision)
         if (collision.gameObject.name == "gewicht_" + x.ToString())
          {
              
+           
+            // Error = GameObject.Find("win");
+            // WeightInPlace = Error.GetComponent<winning_script>().PlacedWeight;
+            WeightInPlace++;
+
+            
 
             gewicht = GameObject.Find("gewicht_" + x.ToString());
 
             mass2 = gewicht.GetComponent<get_mass>().mass;
+            
 
             //snapped = true;
 
@@ -104,7 +116,9 @@ private void OnTriggerEnter2D(Collider2D collision)
         if (collision.gameObject.name == "gewicht_" + x.ToString())
          {
             mass2 = 0.0f;
+            WeightInPlace--;
             //snapped = false;
+            
         
        
     }

@@ -18,8 +18,9 @@ public class instantiate_weights : MonoBehaviour
         list = new List<int>(new int[6]);
         for (int i = 1; i < 6; i++)
         {
-            weights = Instantiate(prefab, new Vector3(i * -2.0F, -6, 0), Quaternion.identity);
+            weights = Instantiate(prefab, new Vector3(-17.9F + (i * 1.5F), -2.0F, 0), Quaternion.identity);
             weights.name = "gewicht_" + i.ToString();
+            weights.transform.parent = GameObject.Find("EasyMode").transform;
             //weights.mass = i;
             //weights.GetComponent<get_mass>().mass = (float)i;
             //gewicht.mass = i;
