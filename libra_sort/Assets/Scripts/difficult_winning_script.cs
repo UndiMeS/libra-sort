@@ -70,20 +70,29 @@ public class difficult_winning_script : MonoBehaviour
 
         if(antwort_zahl == 10){
             Debug.Log("komplett richtig!");
-            for(int y = 1; y < 11; y++){
-                nummer = GameObject.Find("lösung_nummer_" + y.ToString());
-                tmpObj = nummer.GetComponent<TextMeshPro>();
-                tmpObj.color = Color.green;
-                StartCoroutine(ShowStarsCo());
+            if(CompareCounter.counter < 20){
+                Debug.Log("Zu wenig Versuche bei 10 Massestücke!");
+                for(int y = 1; y < 11; y++){
+                    nummer = GameObject.Find("lösung_nummer_" + y.ToString());
+                    tmpObj = nummer.GetComponent<TextMeshPro>();
+                    tmpObj.color = Color.red;
+                }
+            }else{
+                for(int y = 1; y < 11; y++){
+                    nummer = GameObject.Find("lösung_nummer_" + y.ToString());
+                    tmpObj = nummer.GetComponent<TextMeshPro>();
+                    tmpObj.color = Color.green;
+                    StartCoroutine(ShowStarsCo());
+                }
             }
         }
         else if(antwort_zahl!=10 && WeightCount == 10) {
            
-                     for(int y = 1; y < 11; y++){
+            for(int y = 1; y < 11; y++){
                 nummer = GameObject.Find("lösung_nummer_" + y.ToString());
-                    tmpObj = nummer.GetComponent<TextMeshPro>();
-                    tmpObj.color = Color.red;
-                    }
+                tmpObj = nummer.GetComponent<TextMeshPro>();
+                tmpObj.color = Color.red;
+            }
         }
         else if(antwort_zahl!=10 && WeightCount != 10){
             for(int y = 1; y < 11; y++){

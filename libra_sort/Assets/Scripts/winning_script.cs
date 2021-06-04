@@ -69,13 +69,25 @@ public class winning_script : MonoBehaviour
 
         if(antwort_zahl == 5){
             Debug.Log("komplett richtig!");
-            VergleichText.SetText("Vergleiche: " + CompareCounter.counter.ToString());
-            for(int y = 1; y < 6; y++){
-                nummer = GameObject.Find("lösung_nummer_" + y.ToString());
-                tmpObj = nummer.GetComponent<TextMeshPro>();
-                tmpObj.color = Color.green;
-                StartCoroutine(ShowStarsCo());
+
+            if(CompareCounter.counter < 8){
+                Debug.Log("Zu wenig Versuche bei 5 Massestücke!");
+                    for(int y = 1; y < 6; y++){
+                        nummer = GameObject.Find("lösung_nummer_" + y.ToString());
+                        tmpObj = nummer.GetComponent<TextMeshPro>();
+                        tmpObj.color = Color.red;
+                    }
+            }else{
+                VergleichText.SetText("Vergleiche: " + CompareCounter.counter.ToString());
+                for(int y = 1; y < 6; y++){
+                    nummer = GameObject.Find("lösung_nummer_" + y.ToString());
+                    tmpObj = nummer.GetComponent<TextMeshPro>();
+                    tmpObj.color = Color.green;
+                    StartCoroutine(ShowStarsCo());
+                }
             }
+
+            
         }
         else if(antwort_zahl!=5 && WeightCount == 5) {
            
