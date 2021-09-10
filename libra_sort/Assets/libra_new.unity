@@ -11432,8 +11432,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 420}
-  m_SizeDelta: {x: 906.327, y: 112.658295}
+  m_AnchoredPosition: {x: 20.6, y: 420}
+  m_SizeDelta: {x: 1503.5, y: 112.658295}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1432992285
 MonoBehaviour:
@@ -11454,7 +11454,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LIBRA
+  m_text: "LIBRA \nSortieren ohne Intuition"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ec722e4670cd34fe6806271686f93887, type: 2}
   m_sharedMaterial: {fileID: 5334513905916561239, guid: ec722e4670cd34fe6806271686f93887,
@@ -11482,8 +11482,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 80
+  m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -14366,8 +14366,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 289.6}
-  m_SizeDelta: {x: 906.327, y: 103.003784}
+  m_AnchoredPosition: {x: 0, y: -423}
+  m_SizeDelta: {x: 1717.9, y: 103.003784}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1718070293
 MonoBehaviour:
@@ -14388,7 +14388,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sortieren ohne Intuition
+  m_text: "Ziel: Sortiere die gegebenen Massest\xFCcke in aufsteigender Reihenfolge!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ec722e4670cd34fe6806271686f93887, type: 2}
   m_sharedMaterial: {fileID: 5334513905916561239, guid: ec722e4670cd34fe6806271686f93887,
@@ -18653,7 +18653,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1718070292}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
