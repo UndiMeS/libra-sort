@@ -67,7 +67,6 @@ public class difficult_winning_script : MonoBehaviour
 
             }
         }
-
         if(antwort_zahl == 10){
             Debug.Log("komplett richtig!");
             if(CompareCounter.counter < 20){
@@ -77,7 +76,7 @@ public class difficult_winning_script : MonoBehaviour
                     tmpObj = nummer.GetComponent<TextMeshPro>();
                     tmpObj.color = Color.red;
                 }
-            }else{
+            }else if(CompareCounter.counter >= 20 && WeightCount == 10){
                 for(int y = 1; y < 11; y++){
                     nummer = GameObject.Find("lösung_nummer_" + y.ToString());
                     tmpObj = nummer.GetComponent<TextMeshPro>();

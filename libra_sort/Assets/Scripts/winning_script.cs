@@ -77,7 +77,7 @@ public class winning_script : MonoBehaviour
                         tmpObj = nummer.GetComponent<TextMeshPro>();
                         tmpObj.color = Color.red;
                     }
-            }else{
+            }else if (CompareCounter.counter >= 8 && WeightCount == 5) {
                 VergleichText.SetText("Vergleiche: " + CompareCounter.counter.ToString());
                 for(int y = 1; y < 6; y++){
                     nummer = GameObject.Find("lösung_nummer_" + y.ToString());
